@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentimentally</title>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+<body>
+    <h1 class="text-center" style="font-family: Century Gothic; font-size:100px; letter-spacing: 10px; color: white">Sentimentally</h1>
+    <div class="form-group d-flex justify-content-center align-items-center">
+        <!--Action would be JavaScript that processes parameters -->
+        <form action="#" class="" method="POST" id="form">
+            <div class="row" style="text-align: center">
+                <label for="search" style="color: white">Search Twitter</label> <br>
+                <input type="text" name="userInput" id="search" class="form-control form-rounded"> <br>
+                <button type="submit" name="submitButton" class="btn btn-primary form-rounded">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <a href="#" id="topic">
+
+        </a>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="container">
+            <!-- <div class="swiper-slide" style="background-color: white; border-radius: 20px; slideShadows: false;">
+                    <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 1</p>
+                    <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value }}</p>
+                    <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti }}</p>
+            </div>
+            <div class="swiper-slide" style="background-color: white; border-radius: 20px; slideShadows: false;">
+                <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 2</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value2 }}</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti2 }}</p>
+            </div>
+            <div class="swiper-slide" style="background-color: white; border-radius: 20px">
+                <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 3</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value3 }}</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti3 }}</p>
+            </div>
+            <div class="swiper-slide" style="background-color: white; border-radius: 20px">
+                <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 4</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value4 }}</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti4 }}</p>
+            </div>
+            <div class="swiper-slide" style="background-color: white; border-radius: 20px">
+                <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 5</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value5 }}</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti5 }}</p>
+            </div>
+            <div class="swiper-slide" style="background-color: white; border-radius: 20px">
+                <p align="center" style="font-family: Century Gothic; color: black;" class="century-gothic">Tweet 6</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ value6 }}</p>
+                <p align="center" style="font-family: Century Gothic; color: black; font-size:14px;" class="century-gothic">{{ senti6 }}</p>
+            </div> -->
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="container" id="Chart" style="backgrond-color: white;">
+        <canvas id="myChart" width="400" height="100"></canvas>
+        <script>
+            var ctx = document.getElementById("myChart").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: [],
+                    xAxisID: 'Sentiment Score',
+                    datasets: [{
+                        label: 'Sentiment Score',
+                        data: [0],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows : true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('form').submit(() => {
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/search',
+                    data: {userInput: $('#search').val()},
+                    async: false,
+                    success: function(msg) {
+                        getData();
+                    }
+                });
+                // getData();
+                return false;
+            });
+        });
+    </script>
+    <script>
+        function getData() {
+            fetch('/api/tweets')
+                .then((resp) => resp.json())
+                .then((data) => {
+                    // console.log(data.data);
+                    createSwiperCard(data);
+                    fetch('/api/avgScore')
+                        .then((resp) => resp.json())
+                        .then((avg) => {
+                            console.log(avg);
+                            myChart.data.datasets[0].data[0] = avg.score;
+                            myChart.update();
+                        })
+                })
+                .catch((error) => {
+
+                });
+        }
+    </script>
+    <script>
+        function createSwiperCard(tweets) {
+            tweets.forEach(function(entry) {
+                // console.log(entry);
+                var div = document.createElement('div');
+                div.style = "background-color: white; border-radius: 20px; slideShadows: false;";
+                div.setAttribute('class', 'swiper-slide');
+                var p1 = document.createElement('p')
+                p1.setAttribute('style', 'font-family: Century Gothic; color: black;');
+                p1.setAttribute('class','century-gothic');
+                p1.setAttribute('align', 'center');
+                p1.innerHTML = entry.user;
+                div.appendChild(p1);
+                var p2 = document.createElement('p')
+                p2.setAttribute('style', 'font-family: Century Gothic; color: black; font-size:14px;');
+                p2.setAttribute('class','century-gothic');
+                p2.setAttribute('align', 'center');
+                p2.innerHTML = entry.text;
+                div.appendChild(p2);
+                var p3 = document.createElement('p')
+                p3.setAttribute('style', 'font-family: Century Gothic; color: black; font-size:14px;');
+                p3.setAttribute('class','century-gothic');
+                p3.setAttribute('align', 'center');
+                p3.innerHTML = "Sentiment Score: " + entry.score;
+                div.appendChild(p3);
+                // console.log(div.outerHTML);
+                document.getElementById('container').appendChild(div);
+            });
+            var mySwiper = document.querySelector('.swiper-container').swiper;
+            mySwiper.removeAllSlides();
+            mySwiper.update();
+        }
+    </script>
+</body>
+</html>
