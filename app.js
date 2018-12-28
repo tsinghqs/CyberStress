@@ -1,19 +1,24 @@
+// Import Express.js
 var express = require('express');
+// Import twitter client
 var twitter = require('twitter');
+// Import body-parser to get POST parameters
 var bodyParser = require('body-parser');
+// Import sentiment
 var Sentiment = require('sentiment');
+// Import config.json for API key
 var config = require('./config.json');
 
 var app = express();
 var sentiment = new Sentiment();
 
+// Middleware
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 var client = new twitter(config);
 
-var car = {color: 'red"n"blue', door: 4, sunroof: true, price: 30000};
 var tweets = [];
 
 app.post('/api/search', (req, res, next) => {
@@ -55,6 +60,11 @@ app.get('/api/avgScore', (req, res, next) => {
     res.send(scoreObject);
 })
 
+/**
+ * Calculate the sentiment score for each tweet
+ * 
+ * @param {} tweets 
+ */
 function calculateSentiment(tweets) {
     tweets.forEach((element) => {
         var result = sentiment.analyze(element.text);
@@ -62,6 +72,11 @@ function calculateSentiment(tweets) {
     });
 }
 
+/**
+ * Calculate the average sentiment score
+ * 
+ * @param {} tweets 
+ */
 function calculateAvg(tweets) {
     var sum = 0;
     counter = 0;
@@ -75,4 +90,5 @@ function calculateAvg(tweets) {
 
 console.log('Listening on port 8080');
 
+// Run server on port 8080
 app.listen(8080);
