@@ -1,5 +1,6 @@
 # SentimentallyJS
 Remake of our Sentimentally project from PatriotHacks 2018 except this time the backend is an Express application running on a Node.js server
+(https://github.com/EdwardL89/Sentimentally)
 
 Steps to run:
 
