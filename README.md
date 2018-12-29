@@ -26,3 +26,14 @@ npm install -g nodemon
 nodemon app
 
 4. app.js runs on port 8080, to get to the HTML page type in localhost:8080/profile.html
+
+Libraries, Frameworks, and Technologies:
+Node.js
+Express.js
+npm Sentiment
+jQuery
+Swiper.js
+Chart.js
+Twitter API
+
+
