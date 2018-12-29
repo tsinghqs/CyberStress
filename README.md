@@ -1,5 +1,5 @@
 # SentimentallyJS
-Remake of our Sentimentally project from PatriotHacks 2018 except this time the backend is an Express application running on a Node.js server
+Remake of our Sentimentally project from PatriotHacks 2018 except this time the backend is an Express application running on a Node.js server. The front end also now makes Ajax calls to the backend for improved performance.
 (https://github.com/EdwardL89/Sentimentally)
 
 Steps to run:
