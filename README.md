@@ -8,11 +8,11 @@ Steps to run:
 
 The structure for config.json should be
 
-{
-  "consumer_key": "",
-  "consumer_secret": "",
-  "access_token_key": "",
-  "access_token_secret": ""
+{  
+  "consumer_key": "",  
+  "consumer_secret": "",  
+  "access_token_key": "",  
+  "access_token_secret": ""  
 }
 
 3. Make sure you're in the path were app.js is located and run the commmand
@@ -21,7 +21,7 @@ node app
 *If you're going to be editing app.js I highly recommend installing nodemon as this will automatically restart the node server everytime a change is
 detected in app.js*
 
-npm install -g nodemon
+npm install -g nodemon  
 nodemon app
 
 4. app.js runs on port 8080, to get to the HTML page type in localhost:8080/profile.html
