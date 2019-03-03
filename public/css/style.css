@@ -1,5 +1,5 @@
 body {
-    background: #00aced !important;
+    background: #00ACED !important;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color:#000;
@@ -26,4 +26,12 @@ body {
 
 .century-gothic {
     font-family: Century Gothic !important;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
