@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Depression</title>
+    <title>CyberStress</title>
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 <body>
-    <h1 class="text-center" style="font-family: Century Gothic; font-size:100px; letter-spacing: 10px; color: red">Depression</h1>
+    <h1 class="text-center display-2" style="font-size:100px; letter-spacing: 5px; color: #2E18ED">CyberStress</h1>
     <div class="form-group d-flex justify-content-center align-items-center">
         <!--Action would be JavaScript that processes parameters -->
         <form action="#" class="" method="POST" id="form">
             <div class="row" style="text-align: center">
-                <label for="search" style="color: white">Search Twitter</label> <br>
-                <input type="text" name="userInput" id="search" class="form-control form-rounded"> <br>
+                <!--<label for="search" style="color: white">Search Twitter</label> <br>-->
+                <input type="text" placeholder="Search keyword here" name="userInput" id="search" class="form-control form-rounded"> <br>
                 <button type="submit" name="submitButton" class="btn btn-primary form-rounded">Submit</button>
             </div>
         </form>
@@ -134,7 +134,7 @@
             $('form').submit(() => {
                 $.ajax({
                     type: 'POST',
-                    url: '/api/search',
+                    url: 'http://localhost:8080/api/search',
                     data: {userInput: $('#search').val()},
                     async: false,
                     success: function(msg) {
