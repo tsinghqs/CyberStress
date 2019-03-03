@@ -69,9 +69,9 @@
                 type: 'horizontalBar',
                 data: {
                     labels: [],
-                    xAxisID: 'Sentiment Score',
+                    xAxisID: 'Potential Depression Score',
                     datasets: [{
-                        label: 'Sentiment Score',
+                        label: 'Potential Depression Score',
                         data: [0],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -177,20 +177,26 @@
                 p1.setAttribute('style', 'font-family: Century Gothic; color: black;');
                 p1.setAttribute('class','century-gothic');
                 p1.setAttribute('align', 'center');
-                p1.innerHTML = entry.user;
+                p1.innerHTML = entry.name;
                 div.appendChild(p1);
                 var p2 = document.createElement('p')
-                p2.setAttribute('style', 'font-family: Century Gothic; color: black; font-size:14px;');
+                p2.setAttribute('style', 'font-family: Century Gothic; color: black;');
                 p2.setAttribute('class','century-gothic');
                 p2.setAttribute('align', 'center');
-                p2.innerHTML = entry.text;
+                p2.innerHTML = "@" + entry.userName;
                 div.appendChild(p2);
                 var p3 = document.createElement('p')
                 p3.setAttribute('style', 'font-family: Century Gothic; color: black; font-size:14px;');
                 p3.setAttribute('class','century-gothic');
                 p3.setAttribute('align', 'center');
-                p3.innerHTML = "Sentiment Score: " + entry.score;
+                p3.innerHTML = entry.text;
                 div.appendChild(p3);
+                var p4 = document.createElement('p')
+                p4.setAttribute('style', 'font-family: Century Gothic; color: black; font-size:14px;');
+                p4.setAttribute('class','century-gothic');
+                p4.setAttribute('align', 'center');
+                p4.innerHTML = "Potential Depression Score: " + entry.score;
+                div.appendChild(p4);
                 // console.log(div.outerHTML);
                 document.getElementById('container').appendChild(div);
             });

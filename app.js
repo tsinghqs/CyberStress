@@ -37,14 +37,16 @@ let scores = [];
 app.post('/api/search', (req, res, next) => {
     var search = req.body.userInput;
     console.log('Search value: ' + search);
-    client.get('search/tweets', {q: search}, (error, data, response) => {
-        var t = data.statuses;
+    client.get('statuses/user_timeline', {screen_name: search}, (error, data, response) => {
+        console.log("Data: ", data);
+        // var t = data.statuses;
         // console.log(t);
         tweets = [];
         for (var i = 0; i < 9; i++) {
             var tweetObject = {
-                user: t[i].user.name,
-                text: t[i].text,
+                name: data[i].user.screen_name,
+                userName: data[i].user.name,
+                text: data[i].text,
                 score: 0
             }
             tweets.push(tweetObject);
@@ -96,15 +98,15 @@ function calculateSentiment(tweets) {
     .analyzeSentiment({document: document})
     .then(results => {
       const sentiment = results[0].documentSentiment;
-      element.score = sentiment.score; 
+      element.score = sentiment.score * 10; 
       console.log("Score:" ,element.score);
-      let x = parseFloat(sentiment.score);
+      let x = parseFloat(sentiment.score * 10);
        element = {score: x};
        scores.push(x);
        
 
     })
-    console.log("Score:" ,element.score);
+    console.log("Score:" ,element.score * 10);
     /** .catch(err => {
         console.error('ERROR:', err);
       });*/
