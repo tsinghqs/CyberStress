@@ -45,7 +45,7 @@ app.post('/api/search', (req, res, next) => {
             var tweetObject = {
                 user: t[i].user.name,
                 text: t[i].text,
-                score: Math.random() - Math.random()
+                score: 0
             }
             tweets.push(tweetObject);
             // console.log(tweets);
@@ -53,10 +53,10 @@ app.post('/api/search', (req, res, next) => {
         // console.log('Current tweet value');
         // console.log(tweets);
         // console.log('just got response from twitter');
-       // calculateSentiment(tweets);
-        //for (let i = 0; i < 9; i++) {
-            //tweets[i].score = scores[i];
-        //}
+        calculateSentiment(tweets);
+        for (let i = 0; i < 9; i++) {
+            tweets[i].score = scores[i];
+        }
         res.send('Search successful');
     });
 });
@@ -96,14 +96,18 @@ function calculateSentiment(tweets) {
     .analyzeSentiment({document: document})
     .then(results => {
       const sentiment = results[0].documentSentiment;
+      element.score = sentiment.score; 
+      console.log("Score:" ,element.score);
       let x = parseFloat(sentiment.score);
-    //   element = {score: x};
-    //   scores.push(x);
-      console.log("Score:" ,x);
+       element = {score: x};
+       scores.push(x);
+       
+
     })
-    .catch(err => {
+    console.log("Score:" ,element.score);
+    /** .catch(err => {
         console.error('ERROR:', err);
-      });
+      });*/
     });
     
         
